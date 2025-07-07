@@ -4,8 +4,12 @@ import typing
 import numpy as np
 
 
-def sparsity(vector: np.typing.NDArray[np.float64], epsilon: float = 0.001) -> float:
+def sparsity(vector: np.typing.NDArray[np.float64], epsilon: float = 0.0001) -> float:
     return float(np.less(vector, epsilon).sum())
+
+
+def prox(z: np.typing.NDArray[np.float64], threshold: float = 0.1):
+    return np.sign(z) * np.maximum(np.abs(z) - threshold, 0.0)
 
 
 class Model:
@@ -22,7 +26,7 @@ class Model:
                 float,
             ],
         ],
-    ) -> dict[str, float]:
+    ) -> dict[str, Any]:
         metrics = dict[str, float]()
         for metric_name in metrics_dict:
             metrics[metric_name] = metrics_dict[metric_name](self(X), y)
@@ -51,10 +55,12 @@ class CompressiveLinearModel(Model):
                 float,
             ],
         ],
-    ) -> dict[str, float]:
+    ) -> dict[str, Any]:
         metrics = super().compute_metrics(X, y, metrics_dict)
 
         metrics["sparsity"] = sparsity(self.w)
+
+        metrics["path"] = deepcopy(self.w)
 
         return metrics
 
@@ -81,8 +87,8 @@ class SubGradientDescent(Optimizer):
         model.w -= self.learning_rate * grad
 
 
-class SubGradientDescent(Optimizer):
-    def __init__(self, learning_rate: float = 0.01, lam: float = 0.01):
+class ISTA(Optimizer):
+    def __init__(self, learning_rate: float = 0.01, lam: float = 0.1) -> None:
         self.learning_rate: float = learning_rate
         self.lam: float = lam
 
@@ -94,9 +100,24 @@ class SubGradientDescent(Optimizer):
     ):
         X = params["X"]
         y = params["y"]
-        residual = model(X) - y
-        grad = X.T @ residual / X.shape[0] + self.lam * np.sign(model.w)
-        model.w -= self.learning_rate * grad
+        grad = X.T @ (X @ model.w - y)
+
+        model.w = prox(
+            model.w - self.learning_rate * grad, self.learning_rate * self.lam
+        )
+
+
+class CoordinateDescent(Optimizer):
+    def __init__(self, lam: float = 0.1) -> None:
+        self.lam: float = lam
+
+    @override
+    def step(
+        self,
+        model: CompressiveLinearModel,
+        params: dict[str, np.typing.NDArray[np.float64]],
+    ):
+        pass
 
 
 def fit(
