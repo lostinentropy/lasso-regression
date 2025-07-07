@@ -1,0 +1,69 @@
+\documentclass[11pt]{article}
+
+% Packages
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath, amssymb}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+
+% Header/Footer
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{ML Project Report}
+\lhead{Jonas Gericke}
+\cfoot{\thepage}
+
+% Section formatting
+\titleformat{\section}{\large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{1em}{}
+
+% Title
+\title{\textbf{Efficient Algorithms for Lasso Regression}}
+\author{Jonas Gericke and Yexuan Wang \\
+Applied Machine Learning in Python -- LMU Munich \\
+\texttt{jonas.gericke@campus.lmu.de and yexuan.wang@campus.lmu.de}}
+\date{July 9, 2025}
+
+\begin{document}
+
+\maketitle
+
+\section{Task Overview}
+Briefly describe the dataset or model you worked on, the goal of the project, and why the task is challenging. For example, challenges may include complex preprocessing, large dataset size, class imbalance, poor performance of baseline approaches, or the need for more complex models to achieve good results.
+
+\section{Methods}
+Explain the methods you implemented or analyzed. Include relevant equations:
+
+\[
+    \min_{\mathbf{w}} \quad \frac{1}{2} \|\mathbf{w}\|^2 + C \sum_{i=1}^n \xi_i
+\]
+
+
+\[
+    \mathbf{w}^{(t+1)} = \text{prox}{\eta \lambda} \left( \mathbf{w}^{(t)} - \eta \nabla g(\mathbf{w}^{(t)}) \right) \quad \text{with} \quad \text{prox}{\eta \lambda}(z_j) = \text{sign}(z_j) \cdot \max(|z_j| - \eta \lambda, 0)
+\]
+
+\[
+    w_j^{(t+1)} \leftarrow \text{prox}{\lambda}\left( \frac{1}{n} \sum{i=1}^n x_{ij} \left(y_i - \sum_{k \ne j} x_{ik} w_k^{(t)} \right) \right),
+\]
+
+Mention any design decisions or implementation notes.
+
+\section{Experiments and Results}
+Present your results. Use figures, tables, and metrics:
+
+% \begin{figure}[h]
+%     \centering
+%     \includegraphics[width=0.5\textwidth]{figures/accuracy_curve.png}
+%     \caption{Training/validation accuracy over epochs.}
+% \end{figure}
+
+\section{Discussion}
+Summarize key findings, insights, or issues. Optionally, suggest future work or limitations.
+
+\end{document}
