@@ -2,12 +2,6 @@
 
 ## Requirements
 
-This repository uses submodules to access
-[courselib](https://github.com/mselezniova/AppliedML/tree/main/courselib). To clone it you can use
-```
-git clone --recurse-submodules
-```
-
 This project is designed to use the [uv](https://github.com/astral-sh/uv) package manager. Alternatively can use [pip](#run-with-pip) to manually create the required environment.
 
 ### Run with `uv`
