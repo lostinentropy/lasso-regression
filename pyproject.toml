@@ -21,4 +21,4 @@ dev = [
 [tool.basedpyright]
 reportAny = false
 reportExplicitAny = false
- reportUnusedCallResult = false
+reportUnusedCallResult = false
