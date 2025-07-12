@@ -2,7 +2,7 @@ from regression import CompressiveLinearModel
 
 
 def main():
-    print("Hello from lasso-regression!")
+    print("The regression package was successfully loaded.")
 
 
 if __name__ == "__main__":
