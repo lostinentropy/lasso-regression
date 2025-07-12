@@ -1,5 +1,10 @@
 # Efficient Algorithms for Lasso Regression
 
+This project focuses on different methods for solving Lasso regression. The goal is to compare their performance in terms of convergence speed, sparsity,
+and sensitivity to initialization and hyperparameters.
+
+The report for this project can be found [here](./report/report.pdf).
+
 ## Requirements
 
 This project is designed to use the [uv](https://github.com/astral-sh/uv) package manager. Alternatively can use [pip](#run-with-pip) to manually create the required environment.
@@ -35,5 +40,3 @@ deactivate
 
 This again produces a python virtual environments with the required dependencies. You can then open
 the [interactive notebook](/lasso-regression.ipynb).
-
-# ⚠️ Rest todo ⚠️
