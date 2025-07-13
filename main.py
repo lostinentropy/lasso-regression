@@ -1,4 +1,4 @@
-from regression import CompressiveLinearModel
+import regression  # pyright: ignore[reportUnusedImport]
 
 
 def main():
