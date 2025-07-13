@@ -52,7 +52,7 @@ SubGradient Descent is simple and widely applicable, but it typically converges 
 
 \noindent\textbf{The Lasso objective is defined as:}
 \[
-    \min_{\mathbf{w} \in \mathbb{R}^d} \left\{ \frac{1}{2n} \|\mathbf{Xw} - \mathbf{y}\|_2^2 + \lambda \|\mathbf{w}\|_1 \right\}
+    \min_{\mathbf{w} \in \mathbb{R}^d} \frac{1}{2n} \|\mathbf{Xw} - \mathbf{y}\|_2^2 + \lambda \|\mathbf{w}\|_1
 \]
 
 \noindent\textbf{SubGradient Descent update:}
