@@ -10,12 +10,9 @@ class Optimizer:
 
 
 class SubGradientDescent(Optimizer):
-    def __init__(
-        self, learning_rate: float = 0.01, lam_1: float = 0.01, lam_2: float = 0.01
-    ):
+    def __init__(self, learning_rate: float = 0.01, lam: float = 0.01):
         self.learning_rate: float = learning_rate
-        self.lam_1: float = lam_1
-        self.lam_2: float = lam_2
+        self.lam: float = lam
 
     @override
     def step(
@@ -26,12 +23,7 @@ class SubGradientDescent(Optimizer):
         X = params["X"]
         y = params["y"]
         residual = model(X) - y
-        grad = (
-            X.T @ residual / X.shape[0]
-            + self.lam_1 * np.sign(model.w)
-            + 2 * self.lam_2 * model.w
-        )
-        grad = X.T @ residual / X.shape[0] + self.lam_1 * np.sign(model.w)
+        grad = X.T @ residual / X.shape[0] + self.lam * np.sign(model.w)
         model.w -= self.learning_rate * grad
 
 
