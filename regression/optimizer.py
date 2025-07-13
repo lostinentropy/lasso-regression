@@ -16,7 +16,6 @@ class SubGradientDescent(Optimizer):
         self.learning_rate: float = learning_rate
         self.lam_1: float = lam_1
         self.lam_2: float = lam_2
-        self.lam_1: float = lam
 
     @override
     def step(
