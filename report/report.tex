@@ -74,7 +74,7 @@ SubGradient Descent is simple and widely applicable, but it typically converges 
 
 \subsection*{Implementation Notes}
 
-We used fixed learning rates and iteration numbers. ISTA is expected to converge faster and yield sparser solutions, which is confirmed in our experiments.
+We used fixed learning rates and iteration numbers for most experiments. ISTA is expected to converge faster and yield sparser solutions, which is confirmed in our experiments.
 
 \section{Experiments and Results}
 
@@ -82,11 +82,14 @@ We used fixed learning rates and iteration numbers. ISTA is expected to converge
 \subsection{Training Loss and Sparsity}
 \begin{figure}[H]
     \centering
-    \begin{minipage}{0.3\textwidth}
+    \begin{minipage}{0.25\textwidth}
         \includegraphics[width=\linewidth]{figures/fig1.png}
     \end{minipage}
+    \begin{minipage}{0.25\textwidth}
+        \includegraphics[width=\linewidth]{figures/fig2.png}
+    \end{minipage}
     \hfill
-    \begin{minipage}{0.5\textwidth}
+    \begin{minipage}{0.4\textwidth}
         \small
         \textbf{Figure 1:} We train Lasso models  on synthetic data with standard normal initialization, \( \lambda = 0.5 \), and learning rate \( 10^{-4} \) for 10,000 epochs. As figure shows,
         ISTA converges much faster than SubGradient Descent and achieves higher sparsity after about 2000 iterations.
@@ -149,7 +152,7 @@ We consider two initialization schemes: random Gaussian and all-zero initializat
         \small
         \textbf{Figure 4:}
 
-        Initialization significantly influences the convergence behavior of optimization algorithms. We compare three strategies: zero initialization, random Gaussian initialization, and the least-squares solution \( w_0 = (X^\top X)^{-1} X^\top y \).The results show that ISTA consistently converges to highly sparse solutions regardless of initialization, demonstrating strong robustness. In contrast, SubGradient Descent is more sensitive, especially with random initialization, leading to slower and less stable sparsity patterns.
+        Initialization significantly influences the convergence behavior of optimization algorithms. We compare three strategies: zero initialization, random Gaussian initialization, and the least-squares solution \( w_0 = (X^\top X)^{-1} X^\top y \). The results show that ISTA consistently converges to highly sparse solutions regardless of initialization, demonstrating strong robustness. In contrast, SubGradient Descent is more sensitive, especially with random initialization, leading to slower and less stable sparsity patterns.
 
 
     \end{minipage}
@@ -169,7 +172,7 @@ We consider two initialization schemes: random Gaussian and all-zero initializat
     \begin{minipage}{0.5\textwidth}
         \small
         \textbf{Figure 5:}
-        To examine the effect of learning rate, we evaluate both SubGradient Descent and ISTA under a range of learning rates from 0.0001 to 0.005.
+        To examine the effect of learning rate, we evaluate both SubGradient Descent and ISTA under a range of learning rates from 0.0001 to 0.006.
         As shown in the figure, ISTA exhibits stable and consistently low error across all learning rates, indicating strong robustness to this parameter. In contrast, SubGradient Descent is much more sensitive: at low learning rates it converges slowly with high residual error, and although the error decreases with increasing learning rate, it remains significantly higher than ISTA.
     \end{minipage}
 \end{figure}
