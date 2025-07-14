@@ -1,4 +1,4 @@
-import regression  # pyright: ignore[reportUnusedImport]
+import courselib  # pyright: ignore[reportUnusedImport]
 
 
 def main():
