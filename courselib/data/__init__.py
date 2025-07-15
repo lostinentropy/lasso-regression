@@ -1,5 +1,6 @@
 import numpy as np
 
+
 def random_sparse(
     dim: int,
     sparsity: int,
@@ -38,14 +39,20 @@ def generate_dataset(
     sparsity: int,
     noise_scale: float = 1.0,
     generator: np.random.Generator | None = None,
-) -> tuple[np.typing.NDArray[np.float64], np.typing.NDArray[np.float64]]:
+    w: np.typing.NDArray[np.float64] | None = None,
+) -> tuple[
+    np.typing.NDArray[np.float64],
+    np.typing.NDArray[np.float64],
+    np.typing.NDArray[np.float64],
+]:
     if generator is None:
         generator = np.random.default_rng()
 
     X = generator.normal(size=[number_of_items, dim])
-    w = random_sparse(dim, sparsity, generator=generator)
+    if w is None:
+        w = random_sparse(dim, sparsity, generator=generator)
     epsilon = generator.normal(scale=noise_scale, size=[number_of_items])
 
     y = X @ w + epsilon
 
-    return (X, y)
+    return (X, y, w)
