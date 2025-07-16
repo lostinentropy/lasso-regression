@@ -1,6 +1,6 @@
 # Efficient Algorithms for Lasso Regression
 
-This project focuses on different methods for solving Lasso regression. The goal is to compare their performance in terms of convergence speed, sparsity,
+This project investigates solving Lasso regression using two optimization methods: SubGradient Descent and ISTA (Iterative Shrinkage-Thresholding Algorithm). The goal is to compare their performance in terms of convergence speed, sparsity,
 and sensitivity to initialization and hyperparameters.
 
 The report for this project can be found [here](./report/report.pdf) while the interactive notebook can be found [here](./lasso-regression.ipynb).
