@@ -45,6 +45,24 @@ def generate_dataset(
     np.typing.NDArray[np.float64],
     np.typing.NDArray[np.float64],
 ]:
+    """
+    Generated a random synthetic dataset
+
+    Parameters
+    ----------
+    dim : int
+        The number of dimensions in the vectors.
+    number_of_items :
+        Number of items in the dataset
+    sparsity : int
+        The number on nonzero entries in the vectors.
+    noise_scale: float
+        Standard deviation of the added noise
+    generator : optional
+        Optional random number generator generator
+    w : optional
+        If present, use this parameter for w instead of generating a random one
+    """
     if generator is None:
         generator = np.random.default_rng()
 

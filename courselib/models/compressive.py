@@ -6,7 +6,12 @@ import numpy as np
 from .base import Model
 from ..utils import sparsity
 
+
 class CompressiveLinearModel(Model):
+    """
+    A linear model (that optimizes for a sparse representation)
+    """
+
     def __init__(self, w: np.typing.NDArray[np.float64]):
         self.w: np.typing.NDArray[np.float64] = deepcopy(w)
 

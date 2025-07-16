@@ -6,10 +6,22 @@ from .utils import prox
 
 
 class Optimizer:
-    def step(self, _model: Any, _params: Any): ...
+    """
+    Base class for optimizers
+    """
+
+    def step(self, _model: Any, _params: Any):
+        """
+        Iterate the optimizer by one step
+        """
+        ...
 
 
 class SubGradientDescent(Optimizer):
+    """
+    A Lasso optimizer that utilized subgradient descent
+    """
+
     def __init__(self, learning_rate: float = 0.01, lam: float = 0.01):
         self.learning_rate: float = learning_rate
         self.lam: float = lam
