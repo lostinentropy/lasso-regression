@@ -5,6 +5,8 @@ and sensitivity to initialization and hyperparameters.
 
 The report for this project can be found [here](./report/report.pdf) while the interactive notebook can be found [here](./lasso-regression.ipynb).
 
+![Lasso Sparsity](/report/figures/fig2.png "Lasso Sparsity")
+
 ## Requirements
 
 This project is designed to use the [uv](https://github.com/astral-sh/uv) package manager. Alternatively, you can use [pip](#run-with-pip) to manually create the required environment.
