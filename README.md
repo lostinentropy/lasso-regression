@@ -17,7 +17,7 @@ This project is designed to use the [uv](https://github.com/astral-sh/uv) packag
 required dependencies. Simply run
 
 ```setup
-uv run main.py
+uv sync
 ```
 
 This should produce a python virtual environments with the required dependencies. You can then open
@@ -36,8 +36,6 @@ To create a virtual environment with `pip` run
 python3 -m venv .venv
 source .venv/bin/activate
 python3 -m pip install -r requirements.txt
-python3 main.py
-deactivate
 ```
 
 This again produces a python virtual environments with the required dependencies. You can then open
