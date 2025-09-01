@@ -1,3 +1,5 @@
+This repository was part of assigned coursework for the Applied Machine Learning in Python course.
+
 # Efficient Algorithms for Lasso Regression
 
 This project investigates solving Lasso regression using two optimization methods: SubGradient Descent and ISTA (Iterative Shrinkage-Thresholding Algorithm). The goal is to compare their performance in terms of convergence speed, sparsity,
